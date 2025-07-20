@@ -45,7 +45,7 @@
                     android:id="@+id/iconCreateEntry"
                     android:layout_width="122dp"
                     android:layout_height="106dp"
-                    android:contentDescription="Create Entry Icon"
+                    android:contentDescription="@string/create_desc"
                     android:scaleType="fitCenter"
                     android:src="@drawable/cake" />
 
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/fredoka_bold"
-                    android:text="Create Entry"
+                    android:text="@string/create_entry"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/fredoka_bold"
-                    android:text="Title"
+                    android:text="@string/title"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -95,7 +95,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/edit_text_background"
                     android:fontFamily="@font/lato_regular"
-                    android:hint="Enter title..."
+                    android:hint="@string/enter_title"
                     android:padding="12dp"
                     android:textColor="#2E2E2E"
                     android:textColorHint="#666666"
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/fredoka_bold"
-                    android:text="Content"
+                    android:text="@string/content"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -120,7 +120,7 @@
                     android:background="@drawable/edit_text_background"
                     android:fontFamily="@font/indieflower_regular"
                     android:gravity="top|start"
-                    android:hint="Write your diary entry here..."
+                    android:hint="@string/enter_diary"
                     android:inputType="textMultiLine"
                     android:minHeight="120dp"
                     android:padding="12dp"
@@ -138,7 +138,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/entry_card_background"
                 android:fontFamily="@font/fredoka_bold"
-                android:hint="Select Date"
+                android:hint="@string/date"
                 android:padding="12dp"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#E8E8E8"
@@ -161,7 +161,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateField">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSave"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
@@ -171,21 +171,21 @@
                     android:backgroundTint="@null"
                     android:fontFamily="@font/fredoka_bold"
                     android:maxWidth="150dp"
-                    android:text="SAVE"
+                    android:text="@string/save"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    android:background="@drawable/update_button_background"
+                    android:background="@drawable/delete_button_background"
                     android:backgroundTint="@null"
                     android:fontFamily="@font/fredoka_bold"
                     android:maxWidth="150dp"
-                    android:text="UPDATE"
+                    android:text="@string/cancel"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 

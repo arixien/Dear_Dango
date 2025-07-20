@@ -32,7 +32,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:adjustViewBounds="true"
-                android:contentDescription="Dear Dango Logo"
+                android:contentDescription="@string/app_name"
                 android:scaleType="fitCenter"
                 app:layout_constraintDimensionRatio="2.2:1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +165,7 @@
                 android:layout_marginEnd="40dp"
                 android:fontFamily="@font/fredoka_bold"
                 android:gravity="center"
-                android:text="Start your diary journey!\nTap + to create your first entry"
+                android:text="@string/start_diary"
                 android:textColor="#A8C09A"
                 android:textSize="18sp"
                 android:visibility="visible"
@@ -197,7 +197,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/icon_button_background"
-            android:contentDescription="App Info"
+            android:contentDescription="@string/app"
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/info" />
@@ -214,7 +214,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/icon_button_background"
-            android:contentDescription="Exit App"
+            android:contentDescription="@string/exit"
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/exit" />
@@ -240,7 +240,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#C1877E"
             android:clickable="true"
-            android:contentDescription="Add New Diary Entry"
+            android:contentDescription="@string/add_entry"
             app:srcCompat="@drawable/add"
             app:tint="#FFFFFF" />
 
