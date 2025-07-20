@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "93990642397",
+    "project_id": "dear-dango",
+    "storage_bucket": "dear-dango.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93990642397:android:ec7b996973b54a9c14f134",
+        "android_client_info": {
+          "package_name": "com.example.deardango"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxagWjdVquWzw800Yp9uUJnJxX5M6X9X0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
