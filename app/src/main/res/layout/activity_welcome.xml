@@ -13,26 +13,17 @@
 >
 
 
-    <ImageView
-        android:id="@+id/DearDango"
-        android:layout_width="433dp"
-        android:layout_height="366dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="@null" />
-
     <TextView
         android:id="@+id/txWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/fredoka_bold"
         android:text="@string/welcome"
-        android:textSize="17pt"
         android:textColor="#c9958c"
+        android:textSize="17pt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DearDango" />
 
@@ -54,7 +45,7 @@
         android:id="@+id/Imbtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="80dp"
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/cake2"
@@ -62,6 +53,28 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txQuote" />
+
+    <ImageView
+        android:id="@+id/DearDango"
+        android:layout_width="419dp"
+        android:layout_height="136dp"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:fontFamily="@font/fredoka_bold"
+        android:text="@string/cont"
+        android:textColor="@color/dark_green"
+        app:layout_constraintBottom_toTopOf="@+id/Imbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
