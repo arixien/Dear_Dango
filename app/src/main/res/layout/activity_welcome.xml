@@ -6,75 +6,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fdf7e2"
-    android:contentDescription="@null"
-    tools:context=".Welcome"
-    android:name=".Welcome"
-    android:exported="true"
->
+    tools:context=".Welcome">
 
-
-    <TextView
-        android:id="@+id/txWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/fredoka_bold"
-        android:text="@string/welcome"
-        android:textColor="#c9958c"
-        android:textSize="17pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DearDango" />
-
-    <TextView
-        android:id="@+id/txQuote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/fredoka_bold"
-        android:text="@string/sentence"
-        android:textColor="#c9958c"
-        android:textSize="9pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txWelcome" />
-
-    <ImageButton
-        android:id="@+id/Imbtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="80dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/cake2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txQuote" />
-
-    <ImageView
-        android:id="@+id/DearDango"
-        android:layout_width="419dp"
-        android:layout_height="136dp"
-        android:contentDescription="@null"
+    <!-- ScrollView for landscape compatibility -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:fontFamily="@font/fredoka_bold"
-        android:text="@string/cont"
-        android:textColor="@color/dark_green"
-        app:layout_constraintBottom_toTopOf="@+id/Imbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="600dp"
+            android:paddingBottom="32dp">
 
+            <!-- Dear Dango Logo -->
+            <ImageView
+                android:id="@+id/DearDango"
+                android:layout_width="374dp"
+                android:layout_height="333dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Dear Dango Logo"
+                android:scaleType="fitCenter"
+                app:layout_constraintDimensionRatio="3:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_max="400dp"
+                app:layout_constraintWidth_percent="0.85"
+                app:srcCompat="@drawable/logo" />
+
+            <!-- Welcome Text -->
+            <TextView
+                android:id="@+id/txWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/fredoka_bold"
+                android:text="@string/welcome"
+                android:textColor="#c9958c"
+                android:textSize="48sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DearDango" />
+
+            <!-- Quote Text -->
+            <TextView
+                android:id="@+id/txQuote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/fredoka_bold"
+                android:gravity="center"
+                android:text="@string/sentence"
+                android:textColor="#c9958c"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txWelcome" />
+
+            <!-- Button Text -->
+            <TextView
+                android:id="@+id/txButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/fredoka_bold"
+                android:text="@string/cont"
+                android:textColor="@color/dark_green"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txQuote" />
+
+            <!-- Cake Button -->
+            <FrameLayout
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/circle_clipper"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txButton">
+
+                <ImageButton
+                    android:id="@+id/Imbtn"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/cake_circle_background"
+                    android:contentDescription="Get Started Button"
+                    android:padding="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cake" />
+
+            </FrameLayout>
+
+            <!-- Bottom spacer for proper centering -->
+            <View
+                android:id="@+id/bottomSpacer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
