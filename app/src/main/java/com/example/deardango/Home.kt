@@ -106,9 +106,8 @@ class Home : AppCompatActivity() {
 
         // Info button - navigate to About Developers
         btnInfo.setOnClickListener {
-            // TODO: Replace with your AboutDevelopersActivity when ready
-            // val intent = Intent(this, AboutDevelopersActivity::class.java)
-            // startActivity(intent)
+            val intent = Intent(this, AboutDevelopersActivity::class.java)
+            startActivity(intent)
 
             // Temporary: Manual refresh for debugging
             Log.d("Home", "DEBUG: Manual refresh triggered via Info button")
