@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -80,7 +81,7 @@ class EntryList : AppCompatActivity() {
             etContent.setText(intent.getStringExtra("ENTRY_CONTENT") ?: "")
             dateField.setText(intent.getStringExtra("ENTRY_DATE") ?: "")
 
-            // Show update button, hide save button
+            // Show update button, hide cancel button and change save to update
             btnSave.text = "UPDATE"
             btnUpdate.visibility = android.view.View.GONE
         }
@@ -92,7 +93,7 @@ class EntryList : AppCompatActivity() {
             clearForm()
         }
 
-        // Save button
+        // Save button (or Update in edit mode)
         btnSave.setOnClickListener {
             if (isEditMode) {
                 updateEntry()
@@ -101,14 +102,34 @@ class EntryList : AppCompatActivity() {
             }
         }
 
-        // Update button
+        // Cancel button (only visible in create mode)
         btnUpdate.setOnClickListener {
-            updateEntry()
+            cancelEntry()
         }
 
         // Date field click - open date picker
         dateField.setOnClickListener {
             showDatePicker()
+        }
+    }
+
+    private fun cancelEntry() {
+        // Show confirmation dialog if user has entered any data
+        val title = etTitle.text.toString().trim()
+        val content = etContent.text.toString().trim()
+
+        if (title.isNotEmpty() || content.isNotEmpty()) {
+            AlertDialog.Builder(this)
+                .setTitle("Discard Changes?")
+                .setMessage("You have unsaved changes. Are you sure you want to cancel?")
+                .setPositiveButton("Discard") { _, _ ->
+                    finish() // Go back to previous activity
+                }
+                .setNegativeButton("Keep Editing", null)
+                .show()
+        } else {
+            // No data entered, just go back
+            finish()
         }
     }
 
