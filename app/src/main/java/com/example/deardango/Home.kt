@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -146,6 +147,7 @@ class Home : AppCompatActivity() {
     private fun loadDiaryEntriesFromFirebase() {
         val currentUser = auth.currentUser
         if (currentUser == null) {
+            Log.d("Home", "No authenticated user found")
             // User not logged in, redirect to login
             startActivity(Intent(this, Login::class.java))
             finish()
@@ -154,31 +156,51 @@ class Home : AppCompatActivity() {
 
         Log.d("Home", "Loading diary entries for user: ${currentUser.uid}")
 
+        // Show loading state (optional - you can add a progress indicator)
+        // For now, let's just log it
+        Log.d("Home", "Starting Firestore query...")
+
         firestore.collection("diary_entries")
             .whereEqualTo("userId", currentUser.uid)
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .limit(3)
             .get()
             .addOnSuccessListener { documents ->
-                Log.d("Home", "Successfully loaded ${documents.size()} diary entries")
+                Log.d("Home", "Firestore query successful - Found ${documents.size()} documents")
+
+                Toast.makeText(this, "Loaded ${documents.size()} entries", Toast.LENGTH_SHORT)
+                    .show()
+
                 diaryEntries.clear()
 
+                if (documents.isEmpty) {
+                    Log.d("Home", "No diary entries found for user ${currentUser.uid}")
+                    updateUI()
+                    return@addOnSuccessListener
+                }
+
                 for (document in documents) {
+                    Log.d("Home", "Processing document: ${document.id} data: ${document.data}")
+
                     val entry = DiaryEntry(
                         id = document.id,
-                        title = document.getString("title") ?: "",
-                        content = document.getString("content") ?: "",
-                        date = document.getString("date") ?: "",
+                        title = document.getString("title") ?: "Untitled",
+                        content = document.getString("content") ?: "No content",
+                        date = document.getString("date") ?: "No date",
                         timestamp = document.getTimestamp("timestamp")?.toDate() ?: Date(),
                         userId = document.getString("userId") ?: ""
                     )
+
+                    Log.d("Home", "Created entry: ${entry.title} - ${entry.date}")
                     diaryEntries.add(entry)
                 }
 
+                Log.d("Home", "Total entries loaded: ${diaryEntries.size}")
                 updateUI()
             }
             .addOnFailureListener { exception ->
                 Log.w("Home", "Error getting documents: ", exception)
+                Toast.makeText(this, "Failed to load diary entries", Toast.LENGTH_SHORT).show()
                 showEmptyState()
             }
     }
@@ -195,6 +217,7 @@ class Home : AppCompatActivity() {
     }
 
     private fun showEmptyState() {
+        emptyStateMessage.text = "No entries yet"
         emptyStateMessage.visibility = View.VISIBLE
         diaryEntry1.visibility = View.GONE
         diaryEntry2.visibility = View.GONE
@@ -209,6 +232,7 @@ class Home : AppCompatActivity() {
             diaryEntry1.visibility = View.VISIBLE
             tvTitle1.text = diaryEntries[0].title
             tvDate1.text = formatDate(diaryEntries[0].timestamp)
+            Log.d("Home", "Displayed entry 1: ${diaryEntries[0].title}")
         } else {
             diaryEntry1.visibility = View.GONE
         }
@@ -218,6 +242,7 @@ class Home : AppCompatActivity() {
             diaryEntry2.visibility = View.VISIBLE
             tvTitle2.text = diaryEntries[1].title
             tvDate2.text = formatDate(diaryEntries[1].timestamp)
+            Log.d("Home", "Displayed entry 2: ${diaryEntries[1].title}")
         } else {
             diaryEntry2.visibility = View.GONE
         }
@@ -227,6 +252,7 @@ class Home : AppCompatActivity() {
             diaryEntry3.visibility = View.VISIBLE
             tvTitle3.text = diaryEntries[2].title
             tvDate3.text = formatDate(diaryEntries[2].timestamp)
+            Log.d("Home", "Displayed entry 3: ${diaryEntries[2].title}")
         } else {
             diaryEntry3.visibility = View.GONE
         }
