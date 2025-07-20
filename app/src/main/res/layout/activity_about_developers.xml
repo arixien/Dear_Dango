@@ -291,12 +291,6 @@
             android:textColor="#999999"
             android:textSize="12sp" />
 
-        <!-- Spacer -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5sp" />
-
-
         <!-- Copyright -->
         <TextView
             android:layout_width="match_parent"
