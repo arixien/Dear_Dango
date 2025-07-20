@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,28 +13,49 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WelcomeScreen">
-        <activity
-            android:name=".Home"
-            android:exported="false" />
-        <activity
-            android:name=".Signup"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
-            android:exported="false" />
-        <activity
-            android:name=".AboutDevelopersActivity"
-            android:exported="false" />
+        android:theme="@style/Theme.WelcomeScreen"
+        tools:targetApi="31">
+
+        <!-- Welcome Activity (Launcher) -->
         <activity
             android:name=".Welcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+
+        <!-- Signup Activity -->
+        <activity
+            android:name=".Signup"
+            android:exported="false" />
+
+        <!-- Home Activity -->
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+
+        <!-- Entry List Activity (Create/Edit) -->
+        <activity
+            android:name=".EntryList"
+            android:exported="false" />
+
+        <!-- View Entry Activity -->
+        <activity
+            android:name=".ViewEntry"
+            android:exported="false" />
+
+        <!-- About Developers Activity (if you have it) -->
+        <activity
+            android:name=".AboutDevelopersActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

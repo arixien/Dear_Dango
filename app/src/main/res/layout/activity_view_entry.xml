@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".ViewEntry">
+
+    <!-- ScrollView for landscape compatibility -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- View Entry Card -->
+            <LinearLayout
+                android:id="@+id/viewEntryCard"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/entry_card_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_start"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_min="200dp">
+
+                <ImageView
+                    android:id="@+id/iconViewEntry"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:contentDescription="View Entry Icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/page8" />
+
+                <TextView
+                    android:id="@+id/tvViewEntryLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/fredoka_bold"
+                    android:text="View Entry"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Main Content Display Area -->
+            <LinearLayout
+                android:id="@+id/contentDisplayArea"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/content_area_background"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/dateDisplay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewEntryCard"
+                app:layout_constraintHeight_min="300dp">
+
+                <TextView
+                    android:id="@+id/titleDisplayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/fredoka_bold"
+                    android:text="Title"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTitleDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/display_text_background"
+                    android:fontFamily="@font/lato_bold"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:text="Entry Title Here"
+                    android:textColor="#2E2E2E"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/contentDisplayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/fredoka_bold"
+                    android:text="Content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tvContentDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/display_text_background"
+                        android:fontFamily="@font/indieflower_regular"
+                        android:minHeight="120dp"
+                        android:padding="12dp"
+                        android:text="Your diary entry content will appear here..."
+                        android:textColor="#2E2E2E"
+                        android:textSize="16sp" />
+
+                </ScrollView>
+
+            </LinearLayout>
+
+            <!-- Date Display -->
+            <TextView
+                android:id="@+id/dateDisplay"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/entry_card_background"
+                android:fontFamily="@font/fredoka_bold"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:text="Date: Today"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contentDisplayArea" />
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:id="@+id/viewActionButtons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateDisplay">
+
+                <Button
+                    android:id="@+id/btnBackHome"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/save_button_background"
+                    android:fontFamily="@font/fredoka_bold"
+                    android:maxWidth="120dp"
+                    android:text="HOME"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_button_background"
+                    android:fontFamily="@font/fredoka_bold"
+                    android:maxWidth="120dp"
+                    android:text="EDIT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/delete_button_background"
+                    android:fontFamily="@font/fredoka_bold"
+                    android:maxWidth="120dp"
+                    android:text="DELETE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <!-- Guideline for responsive layout -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

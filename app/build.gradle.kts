@@ -8,7 +8,6 @@ android {
     namespace = "com.example.deardango"
     compileSdk = 35
 
-
     buildFeatures {
         viewBinding = true
     }
@@ -42,15 +41,20 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.firebase.firestore.ktx)
+
+    // Firebase BOM - manages all Firebase library versions
+    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
+
+    // Firebase dependencies (versions managed by BOM)
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
+    // Test dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
-    implementation("com.google.firebase:firebase-analytics")
 }
