@@ -1,0 +1,29 @@
+<resources>
+    <string name="welcome">WELCOME</string>
+    <string name="sentence">“Stick your thoughts, savor your days.” </string>
+    <string name="Username">Username</string>
+    <string name="Password">Password </string>
+    <string name="tvUsername">⋆˚࿔ </string>
+    <string name="tvPassword">⋆˚࿔ </string>
+    <string name="design">⋆˚࿔ </string>
+    <string name="login">Login </string>
+    <string name="Create">Create Account</string>
+    <string name="signup">Sign Up</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="back">Back</string>
+    <string name="app_name">Dear Dango</string>
+    <string name="about_the_devs">About the Devs</string>
+    <string name="dev1_name">Christabelle Jaynee S.C. Acedillo</string>
+    <string name="dev1_role">Documentation &amp; Quality Assurance Lead</string>
+    <string name="dev2_name">Rantzel P. Dominguez</string>
+    <string name="dev2_role">Authentication &amp; Backend Integration</string>
+    <string name="dev2_title">Developer</string>
+    <string name="dev3_name">Richielle Ann A. Gutierrez</string>
+    <string name="dev3_role">UI/UX and Application Flow Engineer</string>
+    <string name="dev4_name">Cristine Joy P. Tio</string>
+    <string name="dev4_role">Diary Functionality Developer</string>
+    <string name="copyright_text">© 2025 Dear Dango | Developed by: Rated BRRC</string>
+    <string name="version">Version 1.0</string>
+</resources>

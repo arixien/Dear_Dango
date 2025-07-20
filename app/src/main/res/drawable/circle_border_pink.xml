@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Pink border using your color palette -->
+    <stroke
+        android:width="10dp"
+        android:color="#E8A5A5" />
+
+    <!-- Optional: Add a transparent background -->
+    <solid android:color="@android:color/transparent" />
+
+</shape>

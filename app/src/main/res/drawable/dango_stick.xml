@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Light brown wooden stick color -->
+    <solid android:color="#D4B896" />
+
+    <!-- Rounded ends like a real wooden stick -->
+    <corners android:radius="4dp" />
+
+    <!-- Optional: Add a subtle gradient for more realistic wood look -->
+    <gradient
+        android:startColor="#E5C9A7"
+        android:centerColor="#D4B896"
+        android:endColor="#C2A685"
+        android:angle="90" />
+
+</shape>

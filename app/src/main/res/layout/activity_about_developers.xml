@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF8E1"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_the_devs"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_pink"
+            android:fontFamily="@font/fredoka_bold"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp" />
+
+        <!-- Developers Section with Dango Stick -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Dango Stick Behind Profile Pictures -->
+            <View
+                android:id="@+id/dango_stick"
+                android:layout_width="8dp"
+                android:layout_height="450dp"
+                android:layout_marginStart="39dp"
+                android:background="@drawable/dango_stick" />
+
+            <!-- Developers Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Developer 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Circular Image with Pink Border -->
+                    <FrameLayout
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:background="@drawable/circle_border_pink">
+
+                        <ImageView
+                            android:id="@+id/dev1_image"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/christabelle_photo"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/circle_clipper"
+                            android:clipToOutline="true"
+                            android:contentDescription="@string/dev1_name" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp"
+                        android:baselineAligned="false">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev1_name"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#2E2E2E"
+                            android:fontFamily="@font/lato_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev1_role"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Developer 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Circular Image with Green Border -->
+                    <FrameLayout
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:background="@drawable/circle_border_green">
+
+                        <ImageView
+                            android:id="@+id/dev2_image"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rantzel_photo"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/circle_clipper"
+                            android:clipToOutline="true"
+                            android:contentDescription="@string/dev2_name" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev2_name"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#2E2E2E"
+                            android:fontFamily="@font/lato_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev2_role"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev2_title"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:fontFamily="@font/lato_regular" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Developer 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Circular Image with Pink Border -->
+                    <FrameLayout
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:background="@drawable/circle_border_pink">
+
+                        <ImageView
+                            android:id="@+id/dev3_image"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/richielle_photo"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/circle_clipper"
+                            android:clipToOutline="true"
+                            android:contentDescription="@string/dev3_name" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev3_name"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#2E2E2E"
+                            android:fontFamily="@font/lato_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev3_role"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Developer 4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Circular Image with Green Border -->
+                    <FrameLayout
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:background="@drawable/circle_border_green">
+
+                        <ImageView
+                            android:id="@+id/dev4_image"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/cristine_photo"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/circle_clipper"
+                            android:clipToOutline="true"
+                            android:contentDescription="@string/dev4_name" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev4_name"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#2E2E2E"
+                            android:fontFamily="@font/lato_bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dev4_role"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:fontFamily="@font/lato_regular"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="125sp" />
+
+        <!-- Version -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:text="@string/version"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5sp" />
+
+
+        <!-- Copyright -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:text="@string/copyright_text"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</ScrollView>

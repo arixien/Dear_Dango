@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fdf7e2"
+    tools:context=".Signup">
+
+    <ImageView
+        android:id="@+id/house"
+        android:layout_width="413dp"
+        android:layout_height="529dp"
+        app:srcCompat="@drawable/house"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="-147dp" />
+
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_width="349dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/green_box"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/design"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/FirstName"
+        tools:layout_editor_absoluteX="28dp" />
+
+    <EditText
+        android:id="@+id/confirmpassword"
+        android:layout_width="349dp"
+        android:layout_height="47dp"
+        android:background="@drawable/green_box"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/design"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/ConfirmPassword"
+        tools:layout_editor_absoluteX="33dp" />
+
+    <TextView
+        android:id="@+id/ConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/confirm_password"
+        android:textColor="@color/light_pink"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:layout_editor_absoluteX="33dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="349dp"
+        android:layout_height="47dp"
+        android:background="@drawable/green_box"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/design"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/Password"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/Password"
+        android:textColor="@color/light_pink"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/lastname"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="349dp"
+        android:layout_height="47dp"
+        android:background="@drawable/green_box"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/design"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/LastName"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/FirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/firstname"
+        android:textColor="@color/light_pink"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Signup" />
+
+    <TextView
+        android:id="@+id/Signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fredoka_bold"
+        android:text="@string/signup"
+        android:textColor="@color/dark_green"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="176dp" />
+
+    <TextView
+        android:id="@+id/LastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/lastname"
+        android:textColor="@color/light_pink"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/firstname"
+        tools:layout_editor_absoluteX="31dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Signup1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/signup"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:backgroundTint="@color/light_pink"
+        app:cornerRadius="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/CreateAccountbtn"
+        app:strokeColor="@color/dark_green"
+        app:strokeWidth="4dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/CreateAccountbtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="@string/back"
+        app:backgroundTint="@color/dark_green"
+        app:cornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Signup1"
+        app:layout_constraintTop_toBottomOf="@+id/confirmpassword"
+        app:strokeColor="@color/light_green"
+        app:strokeWidth="4dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
