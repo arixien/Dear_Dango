@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import java.text.SimpleDateFormat
 import java.util.*
 
 class Home : AppCompatActivity() {
@@ -26,20 +26,13 @@ class Home : AppCompatActivity() {
 
     // UI Components
     private lateinit var emptyStateMessage: TextView
-    private lateinit var diaryEntry1: LinearLayout
-    private lateinit var diaryEntry2: LinearLayout
-    private lateinit var diaryEntry3: LinearLayout
-    private lateinit var tvTitle1: TextView
-    private lateinit var tvDate1: TextView
-    private lateinit var tvTitle2: TextView
-    private lateinit var tvDate2: TextView
-    private lateinit var tvTitle3: TextView
-    private lateinit var tvDate3: TextView
+    private lateinit var recyclerViewDiaryEntries: RecyclerView
     private lateinit var fabAddEntry: FloatingActionButton
     private lateinit var btnInfo: ImageButton
     private lateinit var btnExit: ImageButton
 
-    // Data
+    // RecyclerView
+    private lateinit var diaryAdapter: DiaryEntryAdapter
     private val diaryEntries = mutableListOf<DiaryEntry>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +45,9 @@ class Home : AppCompatActivity() {
 
         // Initialize views
         initializeViews()
+
+        // Setup RecyclerView
+        setupRecyclerView()
 
         // Setup click listeners
         setupClickListeners()
@@ -78,24 +74,25 @@ class Home : AppCompatActivity() {
     }
 
     private fun initializeViews() {
-        // Empty state and diary entries
+        // Empty state and RecyclerView
         emptyStateMessage = findViewById(R.id.emptyStateMessage)
-        diaryEntry1 = findViewById(R.id.diaryEntry1)
-        diaryEntry2 = findViewById(R.id.diaryEntry2)
-        diaryEntry3 = findViewById(R.id.diaryEntry3)
-
-        // Text views for diary content
-        tvTitle1 = findViewById(R.id.tvTitle1)
-        tvDate1 = findViewById(R.id.tvDate1)
-        tvTitle2 = findViewById(R.id.tvTitle2)
-        tvDate2 = findViewById(R.id.tvDate2)
-        tvTitle3 = findViewById(R.id.tvTitle3)
-        tvDate3 = findViewById(R.id.tvDate3)
+        recyclerViewDiaryEntries = findViewById(R.id.recyclerViewDiaryEntries)
 
         // Buttons
         fabAddEntry = findViewById(R.id.fabAddEntry)
         btnInfo = findViewById(R.id.btnInfo)
         btnExit = findViewById(R.id.btnExit)
+    }
+
+    private fun setupRecyclerView() {
+        diaryAdapter = DiaryEntryAdapter(diaryEntries) { entry ->
+            openDiaryEntry(entry)
+        }
+
+        recyclerViewDiaryEntries.apply {
+            layoutManager = LinearLayoutManager(this@Home)
+            adapter = diaryAdapter
+        }
     }
 
     private fun setupClickListeners() {
@@ -123,25 +120,6 @@ class Home : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-        // Diary entry click listeners
-        diaryEntry1.setOnClickListener {
-            if (diaryEntries.size > 0) {
-                openDiaryEntry(diaryEntries[0])
-            }
-        }
-
-        diaryEntry2.setOnClickListener {
-            if (diaryEntries.size > 1) {
-                openDiaryEntry(diaryEntries[1])
-            }
-        }
-
-        diaryEntry3.setOnClickListener {
-            if (diaryEntries.size > 2) {
-                openDiaryEntry(diaryEntries[2])
-            }
-        }
     }
 
     private fun loadDiaryEntriesFromFirebase() {
@@ -157,13 +135,12 @@ class Home : AppCompatActivity() {
         Log.d("Home", "Loading diary entries for user: ${currentUser.uid}")
 
         // Show loading state (optional - you can add a progress indicator)
-        // For now, let's just log it
         Log.d("Home", "Starting Firestore query...")
 
         firestore.collection("diary_entries")
             .whereEqualTo("userId", currentUser.uid)
             .orderBy("timestamp", Query.Direction.DESCENDING)
-            .limit(3)
+            // Remove the limit(3) to load ALL entries
             .get()
             .addOnSuccessListener { documents ->
                 Log.d("Home", "Firestore query successful - Found ${documents.size()} documents")
@@ -171,11 +148,11 @@ class Home : AppCompatActivity() {
                 Toast.makeText(this, "Loaded ${documents.size()} entries", Toast.LENGTH_SHORT)
                     .show()
 
-                diaryEntries.clear()
+                val newEntries = mutableListOf<DiaryEntry>()
 
                 if (documents.isEmpty) {
                     Log.d("Home", "No diary entries found for user ${currentUser.uid}")
-                    updateUI()
+                    updateUI(newEntries)
                     return@addOnSuccessListener
                 }
 
@@ -192,11 +169,11 @@ class Home : AppCompatActivity() {
                     )
 
                     Log.d("Home", "Created entry: ${entry.title} - ${entry.date}")
-                    diaryEntries.add(entry)
+                    newEntries.add(entry)
                 }
 
-                Log.d("Home", "Total entries loaded: ${diaryEntries.size}")
-                updateUI()
+                Log.d("Home", "Total entries loaded: ${newEntries.size}")
+                updateUI(newEntries)
             }
             .addOnFailureListener { exception ->
                 Log.w("Home", "Error getting documents: ", exception)
@@ -205,57 +182,27 @@ class Home : AppCompatActivity() {
             }
     }
 
-    private fun updateUI() {
-        Log.d("Home", "updateUI() called with ${diaryEntries.size} entries")
-        if (diaryEntries.isEmpty()) {
+    private fun updateUI(entries: List<DiaryEntry>) {
+        Log.d("Home", "updateUI() called with ${entries.size} entries")
+        if (entries.isEmpty()) {
             Log.d("Home", "Showing empty state")
             showEmptyState()
         } else {
             Log.d("Home", "Showing diary entries")
-            showDiaryEntries()
+            showDiaryEntries(entries)
         }
     }
 
     private fun showEmptyState() {
-        emptyStateMessage.text = "No entries yet"
+        emptyStateMessage.text = "@string/"
         emptyStateMessage.visibility = View.VISIBLE
-        diaryEntry1.visibility = View.GONE
-        diaryEntry2.visibility = View.GONE
-        diaryEntry3.visibility = View.GONE
+        recyclerViewDiaryEntries.visibility = View.GONE
     }
 
-    private fun showDiaryEntries() {
+    private fun showDiaryEntries(entries: List<DiaryEntry>) {
         emptyStateMessage.visibility = View.GONE
-
-        // Show entry 1
-        if (diaryEntries.size > 0) {
-            diaryEntry1.visibility = View.VISIBLE
-            tvTitle1.text = diaryEntries[0].title
-            tvDate1.text = formatDate(diaryEntries[0].timestamp)
-            Log.d("Home", "Displayed entry 1: ${diaryEntries[0].title}")
-        } else {
-            diaryEntry1.visibility = View.GONE
-        }
-
-        // Show entry 2
-        if (diaryEntries.size > 1) {
-            diaryEntry2.visibility = View.VISIBLE
-            tvTitle2.text = diaryEntries[1].title
-            tvDate2.text = formatDate(diaryEntries[1].timestamp)
-            Log.d("Home", "Displayed entry 2: ${diaryEntries[1].title}")
-        } else {
-            diaryEntry2.visibility = View.GONE
-        }
-
-        // Show entry 3
-        if (diaryEntries.size > 2) {
-            diaryEntry3.visibility = View.VISIBLE
-            tvTitle3.text = diaryEntries[2].title
-            tvDate3.text = formatDate(diaryEntries[2].timestamp)
-            Log.d("Home", "Displayed entry 3: ${diaryEntries[2].title}")
-        } else {
-            diaryEntry3.visibility = View.GONE
-        }
+        recyclerViewDiaryEntries.visibility = View.VISIBLE
+        diaryAdapter.updateEntries(entries)
     }
 
     private fun openDiaryEntry(entry: DiaryEntry) {
@@ -265,26 +212,6 @@ class Home : AppCompatActivity() {
         intent.putExtra("ENTRY_CONTENT", entry.content)
         intent.putExtra("ENTRY_DATE", entry.date)
         startActivity(intent)
-    }
-
-    private fun formatDate(date: Date): String {
-        val calendar = Calendar.getInstance()
-        val today = calendar.time
-        calendar.add(Calendar.DAY_OF_YEAR, -1)
-        val yesterday = calendar.time
-
-        return when {
-            isSameDay(date, today) -> "Today"
-            isSameDay(date, yesterday) -> "Yesterday"
-            else -> SimpleDateFormat("MMM dd", Locale.getDefault()).format(date)
-        }
-    }
-
-    private fun isSameDay(date1: Date, date2: Date): Boolean {
-        val cal1 = Calendar.getInstance().apply { time = date1 }
-        val cal2 = Calendar.getInstance().apply { time = date2 }
-        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
     }
 
     private fun setupEdgeToEdge() {
