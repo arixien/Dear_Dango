@@ -1,7 +1,7 @@
 <resources>
     <string name="welcome">WELCOME</string>
     <string name="sentence">“Stick your thoughts, savor your days.” </string>
-    <string name="cont">Continue</string>
+    <string name="cont">Click Cake to Continue</string>
     <string name="Username">Username</string>
     <string name="Password">Password </string>
     <string name="tvUsername">⋆˚࿔ </string>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Green background for the button -->
+    <solid android:color="#A8C09A" />
+
+    <!-- Optional: Add a subtle border -->
+    <stroke
+        android:width="3dp"
+        android:color="#8FAF80" />
+
+</shape>
