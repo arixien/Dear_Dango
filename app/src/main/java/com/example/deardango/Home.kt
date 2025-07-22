@@ -194,7 +194,7 @@ class Home : AppCompatActivity() {
     }
 
     private fun showEmptyState() {
-        emptyStateMessage.text = "@string/"
+        emptyStateMessage.setText(R.string.start_diary)
         emptyStateMessage.visibility = View.VISIBLE
         recyclerViewDiaryEntries.visibility = View.GONE
     }
